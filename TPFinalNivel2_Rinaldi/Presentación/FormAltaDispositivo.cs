@@ -65,5 +65,21 @@ namespace Presentación
                 MessageBox.Show(ex.ToString());
             }
         }
-    }
-}
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pictureBoxCarga.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+
+                pictureBoxCarga.Load("https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1");
+            }
+        }
+        private void txtbox_UrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtbox_UrlImagen.Text);
+        }
+    }   
+}   

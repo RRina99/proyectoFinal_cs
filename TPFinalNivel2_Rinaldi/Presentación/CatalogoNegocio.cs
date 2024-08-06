@@ -24,8 +24,9 @@ namespace Presentación
                     Dispositivo aux = new Dispositivo();
                     aux.Codigo = (string)datos.Lector["Codigo"];
                     aux.Nombre = (string)datos.Lector["Nombre"];
-                    aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];                    
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];                                                                                     
                     aux.Categoria = new Categoria();
                     aux.Categoria.Descripcion = (string)datos.Lector["Dispositivo"];
                     aux.Marca = new Marca();    

@@ -44,24 +44,26 @@
             this.comboBox_Categoria = new System.Windows.Forms.ComboBox();
             this.txtbox_Precio = new System.Windows.Forms.TextBox();
             this.comboBox_Marca = new System.Windows.Forms.ComboBox();
+            this.pictureBoxCarga = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarga)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_agregarNuevoDis
             // 
-            this.btn_agregarNuevoDis.Location = new System.Drawing.Point(192, 378);
+            this.btn_agregarNuevoDis.Location = new System.Drawing.Point(192, 333);
             this.btn_agregarNuevoDis.Name = "btn_agregarNuevoDis";
             this.btn_agregarNuevoDis.Size = new System.Drawing.Size(100, 42);
-            this.btn_agregarNuevoDis.TabIndex = 0;
+            this.btn_agregarNuevoDis.TabIndex = 7;
             this.btn_agregarNuevoDis.Text = "Agregar";
             this.btn_agregarNuevoDis.UseVisualStyleBackColor = true;
             this.btn_agregarNuevoDis.Click += new System.EventHandler(this.btn_agregarNuevoDis_Click);
             // 
             // btn_Cancelar
             // 
-            this.btn_Cancelar.Location = new System.Drawing.Point(367, 378);
+            this.btn_Cancelar.Location = new System.Drawing.Point(359, 333);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(100, 42);
-            this.btn_Cancelar.TabIndex = 1;
+            this.btn_Cancelar.TabIndex = 8;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
@@ -98,21 +100,21 @@
             this.txtbox_Codigo.Location = new System.Drawing.Point(93, 41);
             this.txtbox_Codigo.Name = "txtbox_Codigo";
             this.txtbox_Codigo.Size = new System.Drawing.Size(121, 20);
-            this.txtbox_Codigo.TabIndex = 5;
+            this.txtbox_Codigo.TabIndex = 0;
             // 
             // txtbox_Nombre
             // 
             this.txtbox_Nombre.Location = new System.Drawing.Point(93, 76);
             this.txtbox_Nombre.Name = "txtbox_Nombre";
             this.txtbox_Nombre.Size = new System.Drawing.Size(121, 20);
-            this.txtbox_Nombre.TabIndex = 6;
+            this.txtbox_Nombre.TabIndex = 1;
             // 
             // txtbox_Descripcion
             // 
             this.txtbox_Descripcion.Location = new System.Drawing.Point(93, 111);
             this.txtbox_Descripcion.Name = "txtbox_Descripcion";
             this.txtbox_Descripcion.Size = new System.Drawing.Size(121, 20);
-            this.txtbox_Descripcion.TabIndex = 7;
+            this.txtbox_Descripcion.TabIndex = 2;
             // 
             // lb_UrlImagen
             // 
@@ -128,7 +130,8 @@
             this.txtbox_UrlImagen.Location = new System.Drawing.Point(93, 148);
             this.txtbox_UrlImagen.Name = "txtbox_UrlImagen";
             this.txtbox_UrlImagen.Size = new System.Drawing.Size(121, 20);
-            this.txtbox_UrlImagen.TabIndex = 9;
+            this.txtbox_UrlImagen.TabIndex = 3;
+            this.txtbox_UrlImagen.Leave += new System.EventHandler(this.txtbox_UrlImagen_Leave);
             // 
             // lb_Marca
             // 
@@ -164,14 +167,14 @@
             this.comboBox_Categoria.Location = new System.Drawing.Point(93, 218);
             this.comboBox_Categoria.Name = "comboBox_Categoria";
             this.comboBox_Categoria.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_Categoria.TabIndex = 14;
+            this.comboBox_Categoria.TabIndex = 5;
             // 
             // txtbox_Precio
             // 
             this.txtbox_Precio.Location = new System.Drawing.Point(93, 253);
             this.txtbox_Precio.Name = "txtbox_Precio";
             this.txtbox_Precio.Size = new System.Drawing.Size(121, 20);
-            this.txtbox_Precio.TabIndex = 15;
+            this.txtbox_Precio.TabIndex = 6;
             // 
             // comboBox_Marca
             // 
@@ -180,13 +183,23 @@
             this.comboBox_Marca.Location = new System.Drawing.Point(93, 183);
             this.comboBox_Marca.Name = "comboBox_Marca";
             this.comboBox_Marca.Size = new System.Drawing.Size(121, 21);
-            this.comboBox_Marca.TabIndex = 16;
+            this.comboBox_Marca.TabIndex = 4;
+            // 
+            // pictureBoxCarga
+            // 
+            this.pictureBoxCarga.Location = new System.Drawing.Point(304, 41);
+            this.pictureBoxCarga.Name = "pictureBoxCarga";
+            this.pictureBoxCarga.Size = new System.Drawing.Size(276, 232);
+            this.pictureBoxCarga.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCarga.TabIndex = 17;
+            this.pictureBoxCarga.TabStop = false;
             // 
             // FormAltaDispositivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(653, 432);
+            this.ClientSize = new System.Drawing.Size(653, 400);
+            this.Controls.Add(this.pictureBoxCarga);
             this.Controls.Add(this.comboBox_Marca);
             this.Controls.Add(this.txtbox_Precio);
             this.Controls.Add(this.comboBox_Categoria);
@@ -206,6 +219,7 @@
             this.Name = "FormAltaDispositivo";
             this.Text = "Nuevo Dispositivo";
             this.Load += new System.EventHandler(this.FormAltaDispositivo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarga)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -229,5 +243,6 @@
         private System.Windows.Forms.ComboBox comboBox_Categoria;
         private System.Windows.Forms.TextBox txtbox_Precio;
         private System.Windows.Forms.ComboBox comboBox_Marca;
+        private System.Windows.Forms.PictureBox pictureBoxCarga;
     }
 }

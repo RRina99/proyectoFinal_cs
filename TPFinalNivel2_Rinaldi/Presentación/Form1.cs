@@ -40,17 +40,24 @@ namespace Presentación
         }
 
         private void dgvCatalogo_SelectionChanged(object sender, EventArgs e)
+        {           
+             Dispositivo seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
+             cargarImagen(seleccionado.ImagenUrl);                     
+        }
+
+        private void cargarImagen(string imagen)
         {
             try
             {
-                Dispositivo seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
-                pictureBoxCatalogo.Load(seleccionado.ImagenUrl);
+                pictureBoxCatalogo.Load(imagen);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+
                 pictureBoxCatalogo.Load("https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1");
             }
         }
+
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
