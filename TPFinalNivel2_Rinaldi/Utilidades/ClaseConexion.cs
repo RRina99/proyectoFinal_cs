@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentación
+namespace Utilidades
 {
-    internal class ClaseConexion
+    public class ClaseConexion
 
     {
         private SqlConnection conexion;

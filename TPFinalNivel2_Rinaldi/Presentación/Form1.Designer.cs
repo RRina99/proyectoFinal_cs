@@ -31,6 +31,7 @@
             this.dgvCatalogo = new System.Windows.Forms.DataGridView();
             this.pictureBoxCatalogo = new System.Windows.Forms.PictureBox();
             this.buttonAgregar = new System.Windows.Forms.Button();
+            this.buttonModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCatalogo)).BeginInit();
             this.SuspendLayout();
@@ -39,38 +40,49 @@
             // 
             this.dgvCatalogo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCatalogo.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvCatalogo.Location = new System.Drawing.Point(12, 23);
+            this.dgvCatalogo.Location = new System.Drawing.Point(12, 12);
             this.dgvCatalogo.MultiSelect = false;
             this.dgvCatalogo.Name = "dgvCatalogo";
             this.dgvCatalogo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCatalogo.Size = new System.Drawing.Size(714, 274);
+            this.dgvCatalogo.Size = new System.Drawing.Size(714, 295);
             this.dgvCatalogo.TabIndex = 0;
             this.dgvCatalogo.SelectionChanged += new System.EventHandler(this.dgvCatalogo_SelectionChanged);
             // 
             // pictureBoxCatalogo
             // 
-            this.pictureBoxCatalogo.Location = new System.Drawing.Point(765, 23);
+            this.pictureBoxCatalogo.Location = new System.Drawing.Point(768, 12);
             this.pictureBoxCatalogo.Name = "pictureBoxCatalogo";
-            this.pictureBoxCatalogo.Size = new System.Drawing.Size(299, 274);
+            this.pictureBoxCatalogo.Size = new System.Drawing.Size(299, 295);
             this.pictureBoxCatalogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxCatalogo.TabIndex = 1;
             this.pictureBoxCatalogo.TabStop = false;
             // 
             // buttonAgregar
             // 
-            this.buttonAgregar.Location = new System.Drawing.Point(13, 304);
+            this.buttonAgregar.Location = new System.Drawing.Point(12, 313);
             this.buttonAgregar.Name = "buttonAgregar";
-            this.buttonAgregar.Size = new System.Drawing.Size(98, 38);
+            this.buttonAgregar.Size = new System.Drawing.Size(151, 70);
             this.buttonAgregar.TabIndex = 2;
             this.buttonAgregar.Text = "Agregar";
             this.buttonAgregar.UseVisualStyleBackColor = true;
             this.buttonAgregar.Click += new System.EventHandler(this.buttonAgregar_Click);
             // 
+            // buttonModificar
+            // 
+            this.buttonModificar.Location = new System.Drawing.Point(169, 313);
+            this.buttonModificar.Name = "buttonModificar";
+            this.buttonModificar.Size = new System.Drawing.Size(151, 70);
+            this.buttonModificar.TabIndex = 3;
+            this.buttonModificar.Text = "Modificar";
+            this.buttonModificar.UseVisualStyleBackColor = true;
+            this.buttonModificar.Click += new System.EventHandler(this.buttonModificar_Click);
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1089, 355);
+            this.ClientSize = new System.Drawing.Size(1097, 396);
+            this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.buttonAgregar);
             this.Controls.Add(this.pictureBoxCatalogo);
             this.Controls.Add(this.dgvCatalogo);
@@ -88,6 +100,7 @@
         private System.Windows.Forms.DataGridView dgvCatalogo;
         private System.Windows.Forms.PictureBox pictureBoxCatalogo;
         private System.Windows.Forms.Button buttonAgregar;
+        private System.Windows.Forms.Button buttonModificar;
     }
 }
 

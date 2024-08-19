@@ -7,14 +7,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Utilidades;
+using Negocio;
 
 namespace Presentación
 {
     public partial class FormAltaDispositivo : Form
     {
+        private Dispositivo dispositivo = null;
+
         public FormAltaDispositivo()
         {
             InitializeComponent();
+        }
+        public FormAltaDispositivo(Dispositivo dispositivo)
+        {
+            InitializeComponent();
+            this.dispositivo = dispositivo;
+            Text = "Modificar Dispositivo";
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -24,20 +35,32 @@ namespace Presentación
 
         private void btn_agregarNuevoDis_Click(object sender, EventArgs e)
         {   
-            Dispositivo dispositivo = new Dispositivo();    
+               
             CatalogoNegocio negocio = new CatalogoNegocio();
             try
-            {
+            {   
+                if (dispositivo == null)
+                    dispositivo = new Dispositivo();
+                
                 dispositivo.Codigo = txtbox_Codigo.Text;
                 dispositivo.Nombre = txtbox_Nombre.Text;    
                 dispositivo.Descripcion = txtbox_Descripcion.Text;
                 dispositivo.ImagenUrl = txtbox_UrlImagen.Text;
                 dispositivo.Marca = (Marca)comboBox_Marca.SelectedItem;
                 dispositivo.Categoria = (Categoria)comboBox_Categoria.SelectedItem;
-                dispositivo.Precio = int.Parse(txtbox_Precio.Text);
+                dispositivo.Precio = decimal.Parse(txtbox_Precio.Text);
 
-                negocio.agregar(dispositivo);
-                MessageBox.Show("Dispositivo agregado");
+               if(dispositivo.Id != 0)
+                {
+                    negocio.modificar(dispositivo);
+                    MessageBox.Show("Dispositivo modificado");
+                }
+                else
+                {
+                    negocio.agregar(dispositivo);
+                    MessageBox.Show("Dispositivo agregado");
+                }
+
                 Close();
 
             }
@@ -57,7 +80,24 @@ namespace Presentación
             try
             {
                 comboBox_Categoria.DataSource = categoriaNegocio.listar();
+                comboBox_Categoria.ValueMember = "Id";
+                comboBox_Categoria.DisplayMember = "Descripcion";
                 comboBox_Marca.DataSource     = marcaNegocio.listar();
+                comboBox_Marca.ValueMember = "Id";    
+                comboBox_Marca.DisplayMember = "Descripcion";
+
+                if (dispositivo != null)
+                {
+                    txtbox_Codigo.Text = dispositivo.Codigo;
+                    txtbox_Nombre.Text = dispositivo.Nombre;
+                    txtbox_Descripcion.Text = dispositivo.Descripcion;
+                    txtbox_UrlImagen.Text=dispositivo.ImagenUrl;
+                    cargarImagen(dispositivo.ImagenUrl);
+                    txtbox_Precio.Text = dispositivo.Precio.ToString();
+                    comboBox_Categoria.SelectedValue = dispositivo.Categoria.Id;
+                    comboBox_Marca.SelectedValue = dispositivo.Marca.Id;
+                }
+
             }
             catch (Exception ex)
             {

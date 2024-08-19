@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Utilidades;
+using Negocio;
 
 namespace Presentación
 {
@@ -30,6 +33,7 @@ namespace Presentación
                 listaDispositivo = negocio.listar();
                 dgvCatalogo.DataSource = listaDispositivo;
                 dgvCatalogo.Columns["ImagenUrl"].Visible = false;
+                dgvCatalogo.Columns["Id"].Visible = false;
                 pictureBoxCatalogo.Load(listaDispositivo[0].ImagenUrl);
             }
             catch (Exception ex)
@@ -63,6 +67,16 @@ namespace Presentación
         {
             FormAltaDispositivo agregar = new FormAltaDispositivo();
             agregar.ShowDialog();
+            cargar_form();
+        }
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+            Dispositivo seleccionado;
+            seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
+
+            FormAltaDispositivo modificar = new FormAltaDispositivo(seleccionado);
+            modificar.ShowDialog();
             cargar_form();
         }
     }

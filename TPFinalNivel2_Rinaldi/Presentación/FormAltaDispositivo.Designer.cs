@@ -54,7 +54,7 @@
             this.btn_agregarNuevoDis.Name = "btn_agregarNuevoDis";
             this.btn_agregarNuevoDis.Size = new System.Drawing.Size(100, 42);
             this.btn_agregarNuevoDis.TabIndex = 7;
-            this.btn_agregarNuevoDis.Text = "Agregar";
+            this.btn_agregarNuevoDis.Text = "Aceptar";
             this.btn_agregarNuevoDis.UseVisualStyleBackColor = true;
             this.btn_agregarNuevoDis.Click += new System.EventHandler(this.btn_agregarNuevoDis_Click);
             // 
