@@ -55,7 +55,7 @@
             this.btn_agregarNuevoDis.Size = new System.Drawing.Size(100, 42);
             this.btn_agregarNuevoDis.TabIndex = 7;
             this.btn_agregarNuevoDis.Text = "Aceptar";
-            this.btn_agregarNuevoDis.UseVisualStyleBackColor = true;
+            this.btn_agregarNuevoDis.UseVisualStyleBackColor = false;
             this.btn_agregarNuevoDis.Click += new System.EventHandler(this.btn_agregarNuevoDis_Click);
             // 
             // btn_Cancelar
@@ -65,7 +65,7 @@
             this.btn_Cancelar.Size = new System.Drawing.Size(100, 42);
             this.btn_Cancelar.TabIndex = 8;
             this.btn_Cancelar.Text = "Cancelar";
-            this.btn_Cancelar.UseVisualStyleBackColor = true;
+            this.btn_Cancelar.UseVisualStyleBackColor = false;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);
             // 
             // lb_Codigo
@@ -187,10 +187,9 @@
             // 
             // pictureBoxCarga
             // 
-            this.pictureBoxCarga.Location = new System.Drawing.Point(304, 41);
+            this.pictureBoxCarga.Location = new System.Drawing.Point(304, 28);
             this.pictureBoxCarga.Name = "pictureBoxCarga";
-            this.pictureBoxCarga.Size = new System.Drawing.Size(276, 232);
-            this.pictureBoxCarga.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCarga.Size = new System.Drawing.Size(276, 275);
             this.pictureBoxCarga.TabIndex = 17;
             this.pictureBoxCarga.TabStop = false;
             // 
@@ -198,6 +197,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(653, 400);
             this.Controls.Add(this.pictureBoxCarga);
             this.Controls.Add(this.comboBox_Marca);
@@ -217,6 +217,7 @@
             this.Controls.Add(this.btn_Cancelar);
             this.Controls.Add(this.btn_agregarNuevoDis);
             this.Name = "FormAltaDispositivo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nuevo Dispositivo";
             this.Load += new System.EventHandler(this.FormAltaDispositivo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarga)).EndInit();

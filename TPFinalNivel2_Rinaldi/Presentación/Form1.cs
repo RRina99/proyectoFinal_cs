@@ -32,8 +32,7 @@ namespace Presentación
                 CatalogoNegocio negocio = new CatalogoNegocio();
                 listaDispositivo = negocio.listar();
                 dgvCatalogo.DataSource = listaDispositivo;
-                dgvCatalogo.Columns["ImagenUrl"].Visible = false;
-                dgvCatalogo.Columns["Id"].Visible = false;
+                ocultarColumnas();
                 pictureBoxCatalogo.Load(listaDispositivo[0].ImagenUrl);
             }
             catch (Exception ex)
@@ -43,10 +42,26 @@ namespace Presentación
             }
         }
 
+        private void ocultarColumnas()
+        {
+            dgvCatalogo.Columns["ImagenUrl"].Visible = false;
+            dgvCatalogo.Columns["Id"].Visible = false;
+        }
+
+
+
         private void dgvCatalogo_SelectionChanged(object sender, EventArgs e)
-        {           
-             Dispositivo seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
-             cargarImagen(seleccionado.ImagenUrl);                     
+        {
+            try
+            {
+                Dispositivo seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
+                cargarImagen(seleccionado.ImagenUrl);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         private void cargarImagen(string imagen)
@@ -78,6 +93,46 @@ namespace Presentación
             FormAltaDispositivo modificar = new FormAltaDispositivo(seleccionado);
             modificar.ShowDialog();
             cargar_form();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            CatalogoNegocio negocio = new CatalogoNegocio();
+            Dispositivo seleccionado;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Estás seguro?","Eliminandi",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.Id);
+                    cargar_form();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            List<Dispositivo> listafiltrada;
+            string filtro = txtbox_Filtro.Text;
+
+            if (filtro != "")
+            {
+                listafiltrada = listaDispositivo.FindAll(Dispositivo => Dispositivo.Nombre.ToUpper().Contains(txtbox_Filtro.Text.ToUpper()));
+            }
+            else 
+            {
+                listafiltrada = listaDispositivo;
+            }
+            
+            dgvCatalogo.DataSource = null;
+            dgvCatalogo.DataSource = listafiltrada;
+            ocultarColumnas();
         }
     }
 }
