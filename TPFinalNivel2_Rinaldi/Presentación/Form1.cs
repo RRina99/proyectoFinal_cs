@@ -46,6 +46,8 @@ namespace Presentación
         {
             dgvCatalogo.Columns["ImagenUrl"].Visible = false;
             dgvCatalogo.Columns["Id"].Visible = false;
+            dgvCatalogo.Columns["Descripcion"].Visible=false;
+
         }
 
 
@@ -55,7 +57,17 @@ namespace Presentación
             try
             {
                 Dispositivo seleccionado = (Dispositivo)dgvCatalogo.CurrentRow.DataBoundItem;
-                cargarImagen(seleccionado.ImagenUrl);
+                if (seleccionado != null)
+                {
+                    cargarImagen(seleccionado.ImagenUrl);
+                    labelDescripcion.Text = seleccionado.Descripcion;
+                }
+                else
+                {
+                    cargarImagen("nada");
+                    labelDescripcion.Text = "";
+
+                }
             }
             catch (Exception ex)
             {
@@ -73,7 +85,7 @@ namespace Presentación
             catch (Exception ex)
             {
 
-                pictureBoxCatalogo.Load("https://i0.wp.com/casagres.com.ar/wp-content/uploads/2022/09/placeholder.png?ssl=1");
+                pictureBoxCatalogo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
             }
         }
 
@@ -118,6 +130,13 @@ namespace Presentación
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
+
+        }
+
+
+
+        private void txtbox_Filtro_TextChanged(object sender, EventArgs e)
+        {
             List<Dispositivo> listafiltrada;
             string filtro = txtbox_Filtro.Text;
 
@@ -125,14 +144,16 @@ namespace Presentación
             {
                 listafiltrada = listaDispositivo.FindAll(Dispositivo => Dispositivo.Nombre.ToUpper().Contains(txtbox_Filtro.Text.ToUpper()));
             }
-            else 
+            else
             {
                 listafiltrada = listaDispositivo;
             }
-            
+
             dgvCatalogo.DataSource = null;
             dgvCatalogo.DataSource = listafiltrada;
             ocultarColumnas();
         }
+
+
     }
 }

@@ -118,6 +118,8 @@ namespace Negocio
                 datos.setearConsulta("delete from ARTICULOS where id = @id");
                 datos.setearParametros("@id", id);
                 datos.ejecutarAccion();
+                datos.cerrarConexion();
+                
             }
             catch (Exception ex)
             {

@@ -40,6 +40,8 @@
             this.labelBuscar = new System.Windows.Forms.Label();
             this.txtbox_Filtro = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
+            this.labelDescripcion = new System.Windows.Forms.Label();
+            this.labelDesc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCatalogo)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +86,7 @@
             // 
             // pictureBoxCatalogo
             // 
+            this.pictureBoxCatalogo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxCatalogo.Location = new System.Drawing.Point(732, 138);
             this.pictureBoxCatalogo.Name = "pictureBoxCatalogo";
             this.pictureBoxCatalogo.Size = new System.Drawing.Size(367, 375);
@@ -95,7 +98,7 @@
             // 
             this.buttonAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAgregar.Location = new System.Drawing.Point(12, 519);
+            this.buttonAgregar.Location = new System.Drawing.Point(49, 534);
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(151, 70);
             this.buttonAgregar.TabIndex = 2;
@@ -107,7 +110,7 @@
             // 
             this.buttonModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonModificar.Location = new System.Drawing.Point(169, 519);
+            this.buttonModificar.Location = new System.Drawing.Point(206, 534);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(151, 70);
             this.buttonModificar.TabIndex = 3;
@@ -119,7 +122,7 @@
             // 
             this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEliminar.Location = new System.Drawing.Point(326, 519);
+            this.buttonEliminar.Location = new System.Drawing.Point(363, 534);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(152, 70);
             this.buttonEliminar.TabIndex = 4;
@@ -141,23 +144,24 @@
             // 
             this.labelBuscar.AutoSize = true;
             this.labelBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBuscar.Location = new System.Drawing.Point(61, 83);
+            this.labelBuscar.Location = new System.Drawing.Point(15, 83);
             this.labelBuscar.Name = "labelBuscar";
-            this.labelBuscar.Size = new System.Drawing.Size(67, 20);
+            this.labelBuscar.Size = new System.Drawing.Size(127, 20);
             this.labelBuscar.TabIndex = 6;
-            this.labelBuscar.Text = "Buscar: ";
+            this.labelBuscar.Text = "Buscar Nombre: ";
             // 
             // txtbox_Filtro
             // 
             this.txtbox_Filtro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtbox_Filtro.Location = new System.Drawing.Point(134, 83);
+            this.txtbox_Filtro.Location = new System.Drawing.Point(148, 83);
             this.txtbox_Filtro.Name = "txtbox_Filtro";
             this.txtbox_Filtro.Size = new System.Drawing.Size(223, 22);
             this.txtbox_Filtro.TabIndex = 7;
+            this.txtbox_Filtro.TextChanged += new System.EventHandler(this.txtbox_Filtro_TextChanged);
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(376, 83);
+            this.buttonBuscar.Location = new System.Drawing.Point(1018, 28);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
             this.buttonBuscar.TabIndex = 8;
@@ -165,12 +169,35 @@
             this.buttonBuscar.UseVisualStyleBackColor = true;
             this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
+            // labelDescripcion
+            // 
+            this.labelDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDescripcion.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.labelDescripcion.Location = new System.Drawing.Point(732, 546);
+            this.labelDescripcion.Name = "labelDescripcion";
+            this.labelDescripcion.Size = new System.Drawing.Size(367, 69);
+            this.labelDescripcion.TabIndex = 9;
+            this.labelDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelDesc
+            // 
+            this.labelDesc.AutoSize = true;
+            this.labelDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDesc.Location = new System.Drawing.Point(732, 520);
+            this.labelDesc.Name = "labelDesc";
+            this.labelDesc.Size = new System.Drawing.Size(91, 18);
+            this.labelDesc.TabIndex = 10;
+            this.labelDesc.Text = "Descripción:";
+            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1105, 612);
+            this.ClientSize = new System.Drawing.Size(1107, 624);
+            this.Controls.Add(this.labelDesc);
+            this.Controls.Add(this.labelDescripcion);
             this.Controls.Add(this.buttonBuscar);
             this.Controls.Add(this.txtbox_Filtro);
             this.Controls.Add(this.labelBuscar);
@@ -201,6 +228,8 @@
         private System.Windows.Forms.Label labelBuscar;
         private System.Windows.Forms.TextBox txtbox_Filtro;
         private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.Label labelDescripcion;
+        private System.Windows.Forms.Label labelDesc;
     }
 }
 
