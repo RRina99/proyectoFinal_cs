@@ -22,8 +22,11 @@ namespace Presentación
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
-        {
+        {   
             cargar_form();
+            comboBox_Campo.Items.Add("Precio");
+            comboBox_Campo.Items.Add("Nombre");
+            comboBox_Campo.Text = "Nombre";
         }
         private void cargar_form()
         {
@@ -130,10 +133,25 @@ namespace Presentación
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
+            CatalogoNegocio negocio = new CatalogoNegocio();
+            try
+            {
+                if (comboBox_Campo.SelectedItem != null && comboBox_Criterio.SelectedItem != null)
+                {
+                    string campo = comboBox_Campo.SelectedItem.ToString();
+                    string criterio = comboBox_Criterio.SelectedItem.ToString();
+                    string filtro = txtbox_Filtro_2.Text;
+                    dgvCatalogo.DataSource = negocio.filtrar(campo, criterio, filtro);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
 
         }
-
-
 
         private void txtbox_Filtro_TextChanged(object sender, EventArgs e)
         {
@@ -155,5 +173,51 @@ namespace Presentación
         }
 
 
+        private void comboBox_Campo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = comboBox_Campo.SelectedItem.ToString();
+            txtbox_Filtro_2.Text = "";  
+            if (opcion == "Precio")
+            {
+                comboBox_Criterio.Items.Clear();
+                comboBox_Criterio.Items.Add("Menor a");
+                comboBox_Criterio.Items.Add("Mayor a");
+                comboBox_Criterio.Items.Add("Igual a");
+            }
+            else
+            {
+                comboBox_Criterio.Items.Clear();
+                comboBox_Criterio.Items.Add("Empieza con");
+                comboBox_Criterio.Items.Add("Termina con");
+                comboBox_Criterio.Items.Add("Contiene");
+            }
+        }
+
+        private void txtbox_Filtro_2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtbox_Filtro_2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (comboBox_Campo.SelectedItem.ToString() == "Precio")
+                {
+                    if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+                    {
+                        MessageBox.Show("Solo números", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        e.Handled = true;
+                        return;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+                
+        }
     }
 }

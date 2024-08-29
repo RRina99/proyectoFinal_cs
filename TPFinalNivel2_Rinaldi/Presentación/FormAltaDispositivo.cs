@@ -66,8 +66,9 @@ namespace Presentación
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.ToString());
+                
+                MessageBox.Show("Hay campos obligatorios vacíos");
+                
             }
 
         }
@@ -121,5 +122,17 @@ namespace Presentación
         {
             cargarImagen(txtbox_UrlImagen.Text);
         }
+
+        private void txtbox_Precio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if ((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                MessageBox.Show("Solo números", "Alerta",MessageBoxButtons.OK, MessageBoxIcon.Error);   
+                e.Handled = true;
+                return;
+            }
+  
+        }
+
     }   
 }   

@@ -71,7 +71,7 @@
             // lb_Codigo
             // 
             this.lb_Codigo.AutoSize = true;
-            this.lb_Codigo.Location = new System.Drawing.Point(24, 31);
+            this.lb_Codigo.Location = new System.Drawing.Point(35, 31);
             this.lb_Codigo.Name = "lb_Codigo";
             this.lb_Codigo.Size = new System.Drawing.Size(40, 13);
             this.lb_Codigo.TabIndex = 2;
@@ -80,7 +80,7 @@
             // lb_Nombre
             // 
             this.lb_Nombre.AutoSize = true;
-            this.lb_Nombre.Location = new System.Drawing.Point(20, 57);
+            this.lb_Nombre.Location = new System.Drawing.Point(32, 60);
             this.lb_Nombre.Name = "lb_Nombre";
             this.lb_Nombre.Size = new System.Drawing.Size(44, 13);
             this.lb_Nombre.TabIndex = 3;
@@ -88,47 +88,50 @@
             // 
             // lb_Descripcion
             // 
-            this.lb_Descripcion.AutoSize = true;
-            this.lb_Descripcion.Location = new System.Drawing.Point(12, 126);
+            this.lb_Descripcion.Location = new System.Drawing.Point(20, 127);
             this.lb_Descripcion.Name = "lb_Descripcion";
-            this.lb_Descripcion.Size = new System.Drawing.Size(63, 13);
+            this.lb_Descripcion.Size = new System.Drawing.Size(67, 51);
             this.lb_Descripcion.TabIndex = 4;
-            this.lb_Descripcion.Text = "Descripción";
+            this.lb_Descripcion.Text = "Descripción ";
+            this.lb_Descripcion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtbox_Codigo
             // 
             this.txtbox_Codigo.Location = new System.Drawing.Point(93, 28);
+            this.txtbox_Codigo.MaxLength = 3;
             this.txtbox_Codigo.Name = "txtbox_Codigo";
             this.txtbox_Codigo.Size = new System.Drawing.Size(121, 20);
             this.txtbox_Codigo.TabIndex = 0;
             // 
             // txtbox_Nombre
             // 
-            this.txtbox_Nombre.Location = new System.Drawing.Point(93, 54);
+            this.txtbox_Nombre.Location = new System.Drawing.Point(93, 57);
+            this.txtbox_Nombre.MaxLength = 50;
             this.txtbox_Nombre.Name = "txtbox_Nombre";
             this.txtbox_Nombre.Size = new System.Drawing.Size(121, 20);
             this.txtbox_Nombre.TabIndex = 1;
             // 
             // txtbox_Descripcion
             // 
-            this.txtbox_Descripcion.Location = new System.Drawing.Point(93, 95);
+            this.txtbox_Descripcion.Location = new System.Drawing.Point(93, 83);
+            this.txtbox_Descripcion.MaxLength = 150;
             this.txtbox_Descripcion.Multiline = true;
             this.txtbox_Descripcion.Name = "txtbox_Descripcion";
-            this.txtbox_Descripcion.Size = new System.Drawing.Size(121, 86);
+            this.txtbox_Descripcion.Size = new System.Drawing.Size(121, 109);
             this.txtbox_Descripcion.TabIndex = 2;
             // 
             // lb_UrlImagen
             // 
-            this.lb_UrlImagen.AutoSize = true;
-            this.lb_UrlImagen.Location = new System.Drawing.Point(12, 203);
+            this.lb_UrlImagen.Location = new System.Drawing.Point(20, 198);
             this.lb_UrlImagen.Name = "lb_UrlImagen";
-            this.lb_UrlImagen.Size = new System.Drawing.Size(67, 13);
+            this.lb_UrlImagen.Size = new System.Drawing.Size(67, 32);
             this.lb_UrlImagen.TabIndex = 8;
-            this.lb_UrlImagen.Text = "URL Imagen";
+            this.lb_UrlImagen.Text = "URL Imagen ";
             // 
             // txtbox_UrlImagen
             // 
-            this.txtbox_UrlImagen.Location = new System.Drawing.Point(93, 203);
+            this.txtbox_UrlImagen.Location = new System.Drawing.Point(93, 198);
+            this.txtbox_UrlImagen.MaxLength = 150;
             this.txtbox_UrlImagen.Name = "txtbox_UrlImagen";
             this.txtbox_UrlImagen.Size = new System.Drawing.Size(121, 20);
             this.txtbox_UrlImagen.TabIndex = 3;
@@ -154,34 +157,37 @@
             // 
             // lb_Precio
             // 
-            this.lb_Precio.AutoSize = true;
-            this.lb_Precio.Location = new System.Drawing.Point(38, 286);
+            this.lb_Precio.Location = new System.Drawing.Point(13, 282);
             this.lb_Precio.Name = "lb_Precio";
-            this.lb_Precio.Size = new System.Drawing.Size(37, 13);
+            this.lb_Precio.Size = new System.Drawing.Size(63, 40);
             this.lb_Precio.TabIndex = 12;
-            this.lb_Precio.Text = "Precio";
+            this.lb_Precio.Text = "Precio (obligatorio)";
+            this.lb_Precio.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // comboBox_Categoria
             // 
             this.comboBox_Categoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Categoria.FormattingEnabled = true;
-            this.comboBox_Categoria.Location = new System.Drawing.Point(93, 256);
+            this.comboBox_Categoria.Location = new System.Drawing.Point(93, 251);
             this.comboBox_Categoria.Name = "comboBox_Categoria";
             this.comboBox_Categoria.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Categoria.TabIndex = 5;
             // 
             // txtbox_Precio
             // 
-            this.txtbox_Precio.Location = new System.Drawing.Point(93, 283);
+            this.txtbox_Precio.Location = new System.Drawing.Point(93, 279);
+            this.txtbox_Precio.MaxLength = 15;
             this.txtbox_Precio.Name = "txtbox_Precio";
+            this.txtbox_Precio.ShortcutsEnabled = false;
             this.txtbox_Precio.Size = new System.Drawing.Size(121, 20);
             this.txtbox_Precio.TabIndex = 6;
+            this.txtbox_Precio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbox_Precio_KeyPress);
             // 
             // comboBox_Marca
             // 
             this.comboBox_Marca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Marca.FormattingEnabled = true;
-            this.comboBox_Marca.Location = new System.Drawing.Point(93, 229);
+            this.comboBox_Marca.Location = new System.Drawing.Point(93, 224);
             this.comboBox_Marca.Name = "comboBox_Marca";
             this.comboBox_Marca.Size = new System.Drawing.Size(121, 21);
             this.comboBox_Marca.TabIndex = 4;

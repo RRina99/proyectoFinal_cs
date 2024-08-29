@@ -127,18 +127,83 @@ namespace Negocio
             }
         }
 
+        public List<Dispositivo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Dispositivo> lista = new List<Dispositivo>();
+            ClaseConexion datos = new ClaseConexion();
+            try
+            {
+                string consulta = "select Codigo, Nombre, A.Descripcion, ImagenUrl, C.Descripcion Dispositivo, M.Descripcion Marca, Precio, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdCategoria = C.Id and M.Id = A.IdMarca and ";
+                if (campo == "Precio")
+                {
+                    switch (criterio)
+                    {
+                        case "Mayor a":
+                            consulta += "Precio > " + filtro;
+                            break;
 
+                        case "Menor a":
+                            consulta += "Precio < " + filtro;
+                            break;
 
+                        default:
+                            consulta += "Precio = " + filtro;
+                            break;
+                    }
 
+                }
+                else 
+                {
+                    switch (criterio)
+                    {
+                        case "Empieza con":
+                            consulta += "Nombre like '" + filtro + "%'";
+                            break;
 
+                        case "Termina con":
+                            consulta += "Nombre like '%" + filtro + "'";
+                            break;
 
+                        default:
+                            consulta += "Nombre like '%" + filtro + "%'";
+                            break;
+                    }
+                }
 
+                datos.setearConsulta(consulta);
+                datos.hacerLectura();
+                while (datos.Lector.Read())
+                {
+                    Dispositivo aux = new Dispositivo();
+                    aux.Id = (int)datos.Lector["Id"];
+                    aux.Codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["Descripcion"];
 
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
 
+                    aux.Categoria = new Categoria();
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    aux.Categoria.Descripcion = (string)datos.Lector["Dispositivo"];
 
+                    aux.Marca = new Marca();
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
 
+                    aux.Precio = (decimal)datos.Lector["Precio"];
 
+                    lista.Add(aux);
+                }
 
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 
 }
