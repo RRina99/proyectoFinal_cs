@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Dominio;
 using Utilidades;
 using Negocio;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Presentación
 {
@@ -36,7 +37,14 @@ namespace Presentación
                 listaDispositivo = negocio.listar();
                 dgvCatalogo.DataSource = listaDispositivo;
                 ocultarColumnas();
-                pictureBoxCatalogo.Load(listaDispositivo[0].ImagenUrl);
+                if (listaDispositivo[0].ImagenUrl != null)
+                {
+                    pictureBoxCatalogo.Load(listaDispositivo[0].ImagenUrl);
+                }
+                else
+                {
+                    cargarImagen("");
+                }
             }
             catch (Exception ex)
             {
@@ -67,7 +75,7 @@ namespace Presentación
                 }
                 else
                 {
-                    cargarImagen("nada");
+                    cargarImagen("");
                     labelDescripcion.Text = "";
 
                 }
@@ -134,20 +142,28 @@ namespace Presentación
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             CatalogoNegocio negocio = new CatalogoNegocio();
+            
             try
             {
+                
                 if (comboBox_Campo.SelectedItem != null && comboBox_Criterio.SelectedItem != null)
                 {
+                    
                     string campo = comboBox_Campo.SelectedItem.ToString();
                     string criterio = comboBox_Criterio.SelectedItem.ToString();
                     string filtro = txtbox_Filtro_2.Text;
                     dgvCatalogo.DataSource = negocio.filtrar(campo, criterio, filtro);
-                }
+                    if(dgvCatalogo.CurrentRow == null)
+                    {
+                        cargarImagen("");
+                        labelDescripcion.Text = "";
+                    }                    
+                }             
 
             }
             catch (Exception ex)
             {
-
+                
                 MessageBox.Show(ex.ToString());
             }
 
@@ -156,18 +172,20 @@ namespace Presentación
         private void txtbox_Filtro_TextChanged(object sender, EventArgs e)
         {
             List<Dispositivo> listafiltrada;
-            string filtro = txtbox_Filtro.Text;
 
+            string filtro = txtbox_Filtro.Text;
             if (filtro != "")
             {
                 listafiltrada = listaDispositivo.FindAll(Dispositivo => Dispositivo.Nombre.ToUpper().Contains(txtbox_Filtro.Text.ToUpper()));
             }
             else
-            {
-                listafiltrada = listaDispositivo;
+            {                
+                listafiltrada = listaDispositivo;                
             }
 
             dgvCatalogo.DataSource = null;
+            labelDescripcion.Text = "";
+            cargarImagen("");
             dgvCatalogo.DataSource = listafiltrada;
             ocultarColumnas();
         }
@@ -176,13 +194,15 @@ namespace Presentación
         private void comboBox_Campo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = comboBox_Campo.SelectedItem.ToString();
-            txtbox_Filtro_2.Text = "";  
+            txtbox_Filtro_2.Text = "";
+            
             if (opcion == "Precio")
             {
                 comboBox_Criterio.Items.Clear();
                 comboBox_Criterio.Items.Add("Menor a");
                 comboBox_Criterio.Items.Add("Mayor a");
                 comboBox_Criterio.Items.Add("Igual a");
+                comboBox_Criterio.Text = "Menor a";
             }
             else
             {
@@ -190,13 +210,10 @@ namespace Presentación
                 comboBox_Criterio.Items.Add("Empieza con");
                 comboBox_Criterio.Items.Add("Termina con");
                 comboBox_Criterio.Items.Add("Contiene");
+                comboBox_Criterio.Text = "Empieza con";
             }
         }
 
-        private void txtbox_Filtro_2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void txtbox_Filtro_2_KeyPress(object sender, KeyPressEventArgs e)
         {

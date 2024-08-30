@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Dominio;
 using Utilidades;
 using Negocio;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Presentación
 {
@@ -38,22 +39,33 @@ namespace Presentación
                
             CatalogoNegocio negocio = new CatalogoNegocio();
             try
-            {   
+            {
                 if (dispositivo == null)
                     dispositivo = new Dispositivo();
-                
-                dispositivo.Codigo = txtbox_Codigo.Text;
-                dispositivo.Nombre = txtbox_Nombre.Text;    
-                dispositivo.Descripcion = txtbox_Descripcion.Text;
+
+                if (txtbox_Codigo.Text != "" && txtbox_Nombre.Text != "" && txtbox_Descripcion.Text != "") 
+                { 
+                    dispositivo.Codigo = txtbox_Codigo.Text;
+                    dispositivo.Nombre = txtbox_Nombre.Text;
+                    dispositivo.Descripcion = txtbox_Descripcion.Text;
+                }
+
                 dispositivo.ImagenUrl = txtbox_UrlImagen.Text;
                 dispositivo.Marca = (Marca)comboBox_Marca.SelectedItem;
                 dispositivo.Categoria = (Categoria)comboBox_Categoria.SelectedItem;
                 dispositivo.Precio = decimal.Parse(txtbox_Precio.Text);
 
-               if(dispositivo.Id != 0)
+                if(dispositivo.Id != 0)
                 {
-                    negocio.modificar(dispositivo);
-                    MessageBox.Show("Dispositivo modificado");
+                    if (txtbox_Codigo.Text != "" && txtbox_Nombre.Text != "" && txtbox_Descripcion.Text != "")
+                    {
+                        negocio.modificar(dispositivo);
+                        MessageBox.Show("Dispositivo modificado");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hay campos obligatorios vacíos (*). No se guardarán los cambios."); 
+                    }   // No pude resolverlo de otra manera, estuve mucho rato y esto es a lo mejor que llegué.
                 }
                 else
                 {
@@ -67,7 +79,7 @@ namespace Presentación
             catch (Exception ex)
             {
                 
-                MessageBox.Show("Hay campos obligatorios vacíos");
+                MessageBox.Show("Hay campos obligatorios vacíos (*). Llenalos por favor.");
                 
             }
 

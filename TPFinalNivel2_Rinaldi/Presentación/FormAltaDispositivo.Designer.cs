@@ -73,26 +73,26 @@
             this.lb_Codigo.AutoSize = true;
             this.lb_Codigo.Location = new System.Drawing.Point(35, 31);
             this.lb_Codigo.Name = "lb_Codigo";
-            this.lb_Codigo.Size = new System.Drawing.Size(40, 13);
+            this.lb_Codigo.Size = new System.Drawing.Size(47, 13);
             this.lb_Codigo.TabIndex = 2;
-            this.lb_Codigo.Text = "Codigo";
+            this.lb_Codigo.Text = "Codigo *";
             // 
             // lb_Nombre
             // 
             this.lb_Nombre.AutoSize = true;
             this.lb_Nombre.Location = new System.Drawing.Point(32, 60);
             this.lb_Nombre.Name = "lb_Nombre";
-            this.lb_Nombre.Size = new System.Drawing.Size(44, 13);
+            this.lb_Nombre.Size = new System.Drawing.Size(51, 13);
             this.lb_Nombre.TabIndex = 3;
-            this.lb_Nombre.Text = "Nombre";
+            this.lb_Nombre.Text = "Nombre *";
             // 
             // lb_Descripcion
             // 
-            this.lb_Descripcion.Location = new System.Drawing.Point(20, 127);
+            this.lb_Descripcion.Location = new System.Drawing.Point(12, 127);
             this.lb_Descripcion.Name = "lb_Descripcion";
-            this.lb_Descripcion.Size = new System.Drawing.Size(67, 51);
+            this.lb_Descripcion.Size = new System.Drawing.Size(75, 20);
             this.lb_Descripcion.TabIndex = 4;
-            this.lb_Descripcion.Text = "Descripción ";
+            this.lb_Descripcion.Text = "Descripción *";
             this.lb_Descripcion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // txtbox_Codigo
@@ -157,11 +157,11 @@
             // 
             // lb_Precio
             // 
-            this.lb_Precio.Location = new System.Drawing.Point(13, 282);
+            this.lb_Precio.Location = new System.Drawing.Point(20, 282);
             this.lb_Precio.Name = "lb_Precio";
             this.lb_Precio.Size = new System.Drawing.Size(63, 40);
             this.lb_Precio.TabIndex = 12;
-            this.lb_Precio.Text = "Precio (obligatorio)";
+            this.lb_Precio.Text = "Precio *";
             this.lb_Precio.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // comboBox_Categoria

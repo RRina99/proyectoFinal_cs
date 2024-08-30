@@ -135,20 +135,27 @@ namespace Negocio
             {
                 string consulta = "select Codigo, Nombre, A.Descripcion, ImagenUrl, C.Descripcion Dispositivo, M.Descripcion Marca, Precio, A.IdMarca, A.IdCategoria, A.Id from ARTICULOS A, CATEGORIAS C, MARCAS M where A.IdCategoria = C.Id and M.Id = A.IdMarca and ";
                 if (campo == "Precio")
-                {
-                    switch (criterio)
+                {   
+                    if(filtro != "")
                     {
-                        case "Mayor a":
-                            consulta += "Precio > " + filtro;
-                            break;
+                        switch (criterio)
+                        {
+                            case "Mayor a":
+                                consulta += "Precio > " + filtro;
+                                break;
 
-                        case "Menor a":
-                            consulta += "Precio < " + filtro;
-                            break;
+                            case "Menor a":
+                                consulta += "Precio < " + filtro;
+                                break;
 
-                        default:
-                            consulta += "Precio = " + filtro;
-                            break;
+                            default:
+                                consulta += "Precio = " + filtro;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        consulta += "Nombre like '%%'";
                     }
 
                 }
